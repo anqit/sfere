@@ -1,0 +1,21 @@
+name: sfere
+description: >-
+  A declarative Flutter system for aggregating and observing values contributed
+  from multiple points in the widget tree.
+version: 0.1.0
+repository: https://github.com/anqit/sfere
+
+environment:
+  sdk: '>=3.9.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.1
+  zadart: ^0.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
