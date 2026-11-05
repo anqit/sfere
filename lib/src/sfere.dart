@@ -300,7 +300,7 @@ class CustomSfereBuilderKeyed<K, T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      listener.map((l) =>
+      listener?.pipe((l) =>
           BlocConsumer<_SfereTracker<K, T>, SfereStateKeyed<K, T>>(
             buildWhen: buildWhen,
             listenWhen: listenWhen,
@@ -344,7 +344,7 @@ class SfereBuilder<V> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      listener.map((l) =>
+      listener?.pipe((l) =>
           BlocConsumer<_SfereValueCubit<V>, V>(
             buildWhen: buildWhen,
             listenWhen: listenWhen,
@@ -377,9 +377,9 @@ class CustomSfereSelectorKeyed<K, T, V> extends StatelessWidget {
       selector: selector,
       builder: builder,
     );
-    return listener.map((l) =>
+    return listener?.pipe((l) =>
         BlocListener<_SfereTracker<K, T>, SfereStateKeyed<K, T>>(
-          listenWhen: listenWhen.map((lw) => (prev, curr) => lw(selector(prev), selector(curr))),
+          listenWhen: listenWhen?.pipe((lw) => (prev, curr) => lw(selector(prev), selector(curr))),
           listener: (ctx, state) => l(ctx, selector(state)),
           child: selectorWidget,
         )
@@ -417,9 +417,9 @@ class SfereSelector<V, W> extends StatelessWidget {
       selector: selector,
       builder: builder,
     );
-    return listener.map((l) =>
+    return listener?.pipe((l) =>
         BlocListener<_SfereValueCubit<V>, V>(
-          listenWhen: listenWhen.map((lw) => (prev, curr) => lw(selector(prev), selector(curr))),
+          listenWhen: listenWhen?.pipe((lw) => (prev, curr) => lw(selector(prev), selector(curr))),
           listener: (ctx, state) => l(ctx, selector(state)),
           child: selectorWidget,
         )
